@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        display: flex;
+      }
+      .container {
+        width: 400px;
+        height: 831.14px;
+        margin-left: 10px;
+        box-sizing: border-box;
+        /* outline: 1px solid red; */
+      }
+      .container .status {
+        height: 30px;
+        background-color: #b0b0b0;
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        padding-left: 20px;
+      }
+      .container .status .text {
+        font-size: 9px;
+        color: #fff;
+        font-weight: 100;
+        margin-right: 3px;
+      }
+      .container .status .signal {
+        margin-right: 3px;
+      }
+      .container .status .wifi {
+        margin-right: 3px;
+      }
+      .container .status .speed {
+        width: 15px;
+        height: 15px;
+        font-size: 8px;
+        color: #fff;
+        margin-right: 175px;
+        transform: translateY(-3px);
+      }
+      .container .status .battery-text,
+      .container .status .time {
+        font-size: 8px;
+        color: #fff;
+        margin-right: 1px;
+      }
+      .container .status .battery {
+        margin-right: 1px;
+      }
+
+      .container .page-head {
+        width: 100%;
+        height: 54px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .container .page-head .left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container .page-head .home {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+      .container .page-head .text {
+        font-size: 16px;
+        font-weight: 400;
+        /* color: red; */
+      }
+      .container .page-head .right {
+        width: 120px;
+        transform: translateX(-15px);
+      }
+      .container .blue-back {
+        width: 100%;
+        height: 110px;
+        background-color: #3589eb;
+        display: grid;
+        grid-template-columns: 200px 200px;
+        grid-template-rows: 55px 55px;
+        justify-content: center;
+        align-items: center;
+      }
+      .container .blue-back .item {
+        color: #fff;
+      }
+      .container .blue-back .item1 {
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+      }
+      .container .blue-back .item1 img {
+        margin-right: 10px;
+      }
+      .container .blue-back .item1 .text {
+        color: #c3ffff;
+        font-size: 20px;
+      }
+      .container .blue-back .item2 {
+        display: flex;
+        justify-content: end;
+        margin-right: 30px;
+        color: #c3ffff;
+        font-size: 20px;
+      }
+      .container .blue-back .item3 {
+        margin-left: 15px;
+      }
+      .container .blue-back .item4 {
+        display: flex;
+        justify-content: end;
+        color: #fff;
+        margin-right: 20px;
+      }
+
+      .container .dynamic-text {
+        width: 100%;
+        height: 38px;
+        background-color: #fffbef;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+      .container .dynamic-text .text-container {
+        margin: 0 10px;
+        font-size: 16px;
+        width: 400px;
+        height: 25px;
+        overflow: hidden;
+        white-space: nowrap;
+        color: #dd6d30;
+        transform: translateX(307px);
+      }
+
+      .container .info-container {
+        width: 100%;
+        height: 600px;
+        background-color: #eeeeee;
+        display: grid;
+        grid-template-columns: 200px 200px;
+        grid-template-rows: 410px 190px;
+        grid-area: auto;
+        justify-content: center;
+        align-items: center;
+      }
+      .container .info-container .qr-code-container {
+        margin: 10px;
+        height: 402px;
+        transform: translateY(5px);
+        border-radius: 5px;
+        background-color: #fff;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .container .info-container .qr-code-container .time {
+        font-size: 35px;
+        color: #353d51;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .container .info-container .qr-code-container img {
+        width: 300px;
+      }
+
+      .container .info-container .hesuan-container {
+        width: 183px;
+        height: 160px;
+        background-color: #fff;
+        margin-left: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        border: 3px solid #3acb51;
+      }
+      .container .info-container .hesuan-container .content {
+        width: 100px;
+        height: 75px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .container .info-container .hesuan-container .title {
+        color: #31e04d;
+        font-size: 15px;
+      }
+      .container .info-container .hesuan-container .content .dur {
+        font-size: 40px;
+        color: #3acb51;
+        font-weight: bold;
+      }
+      .container .info-container .hesuan-container .content .desp {
+        width: 30px;
+        color: #31e04d;
+        margin-left: 5px;
+        font-size: 15px;
+      }
+      .container .info-container .hesuan-container .bottom-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+      }
+      .container .info-container .hesuan-container .bottom-container .right {
+        margin-right: 10px;
+      }
+      .container
+        .info-container
+        .hesuan-container
+        .bottom-container
+        .description {
+        color: #c1baba;
+      }
+
+      .container .info-container .vaccanico-container {
+        width: 183px;
+        height: 160px;
+        background-color: #fff;
+        margin-left: 3px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+      }
+      .container .info-container .vaccanico-container {
+        width: 183px;
+        height: 160px;
+        background-color: #fff;
+        margin-left: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .container .info-container .vaccanico-container .content {
+        width: 100px;
+        height: 75px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .container .info-container .vaccanico-container .title {
+        font-size: 15px;
+      }
+      .container .info-container .vaccanico-container .content {
+        color: #3acb51;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .container .info-container .vaccanico-container .bottom-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+      }
+      .container .info-container .vaccanico-container .bottom-container .left {
+        margin-left: 10px;
+      }
+      .container
+        .info-container
+        .vaccanico-container
+        .bottom-container
+        .description {
+        color: #c1baba;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="./1.jpg" alt="" style="width: 400px" /> -->
+    <div class="container">
+      <div class="status">
+        <div class="text">中国电信</div>
+        <!-- 信号 -->
+        <svg
+          class="signal"
+          style="
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+            fill: #fff;
+            overflow: hidden;
+          "
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="4926"
+        >
+          <path
+            d="M160 768a32 32 0 0 1 31.701333 27.648l0.298667 4.352v64a32 32 0 0 1-63.701333 4.352L128 864v-64a32 32 0 0 1 32-32z m170.666667-127.957333a32 32 0 0 1 31.701333 27.690666l0.298667 4.309334v191.957333a32 32 0 0 1-63.701334 4.352L298.666667 864v-191.957333a32 32 0 0 1 32-32z m170.666666-128.042667a32 32 0 0 1 31.701334 27.648l0.298666 4.352v320a32 32 0 0 1-63.701333 4.352L469.333333 864v-320a32 32 0 0 1 32-32z m170.666667-128a32 32 0 0 1 31.701333 27.648l0.298667 4.352v448a32 32 0 0 1-63.701333 4.352L640 864V416a32 32 0 0 1 32-32z m168.96-128a31.189333 31.189333 0 0 1 30.805333 27.392l0.241334 4.309333 2.389333 576c0.170667 17.664-13.482667 32.128-30.506667 32.298667a31.189333 31.189333 0 0 1-30.762666-27.349333l-0.241334-4.352-2.389333-576c-0.170667-17.621333 13.482667-32.085333 30.506667-32.298667z m-385.194667-128c29.525333 0 52.650667 7.04 69.290667 21.12 16.64 14.08 26.538667 34.602667 29.610667 61.525333h-49.962667c-2.304-14.250667-7.338667-24.704-15.146667-31.317333-7.808-6.613333-18.56-9.898667-32.256-9.898667-17.493333 0-30.72 6.528-39.893333 19.626667-9.088 13.141333-13.738667 32.682667-13.824 58.538667v15.914666c0 26.154667 4.949333 45.866667 14.848 59.221334 9.941333 13.354667 24.490667 20.053333 43.648 20.053333 19.285333 0 33.024-4.138667 41.258667-12.373333V287.530667h-46.72v-37.802667H554.666667v99.413333c-9.258667 11.093333-22.314667 19.626667-39.168 25.728A164.138667 164.138667 0 0 1 459.349333 384c-21.546667 0-40.448-4.693333-56.746666-14.08a94.165333 94.165333 0 0 1-37.632-41.002667c-8.832-17.92-13.354667-38.997333-13.610667-63.146666v-16.938667c0-24.874667 4.224-46.421333 12.586667-64.597333a93.013333 93.013333 0 0 1 36.266666-41.813334c15.786667-9.6 34.304-14.421333 55.552-14.421333z m-173.909333 3.413333v155.392h28.202667v39.850667h-28.202667V380.586667h-49.493333V326.656H130.261333L128 295.509333 231.850667 131.413333h50.005333z m-49.493333 67.413334l-3.242667 5.674666-51.84 82.304h55.125333V198.826667z"
+            p-id="4927"
+          ></path>
+        </svg>
+
+        <!-- wifi -->
+        <svg
+          class="wifi"
+          style="
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+            fill: #fff;
+            overflow: hidden;
+          "
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          p-id="26446"
+        >
+          <path
+            d="M512 810.666667m-42.666667 0a42.666667 42.666667 0 1 0 85.333334 0 42.666667 42.666667 0 1 0-85.333334 0ZM512 597.333333a213.333333 213.333333 0 0 0-148.053333 59.733334 42.666667 42.666667 0 1 0 59.306666 61.44 131.413333 131.413333 0 0 1 177.493334 0 42.666667 42.666667 0 1 0 59.306666-61.44A213.333333 213.333333 0 0 0 512 597.333333zM512 384a384 384 0 0 0-276.053333 117.333333A42.666667 42.666667 0 0 0 298.666667 560.64a298.666667 298.666667 0 0 1 430.08 0 42.666667 42.666667 0 0 0 30.293333 12.8 42.666667 42.666667 0 0 0 30.72-72.106667A384 384 0 0 0 512 384zM926.72 338.346667a597.333333 597.333333 0 0 0-829.44 0 42.666667 42.666667 0 0 0 58.88 61.44 512 512 0 0 1 711.68 0 42.666667 42.666667 0 0 0 29.44 11.946666 42.666667 42.666667 0 0 0 30.72-13.226666 42.666667 42.666667 0 0 0-1.28-60.16z"
+            p-id="26447"
+          ></path>
+        </svg>
+
+        <div class="speed">5.7 K/s</div>
+
+        <!-- 闹钟 -->
+        <svg
+          class="icon"
+          style="width: 1em; height: 1em; fill: #fff; overflow: hidden"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          p-id="16349"
+        >
+          <path
+            d="M512 813.248c-158.784 0-288-129.216-288-288s129.216-288 288-288 288 129.216 288 288-129.216 288-288 288m0-640c-194.08 0-352 157.92-352 352 0 101.856 43.744 193.472 113.152 257.824a31.04 31.04 0 0 0-13.248 7.552l-58.528 58.56a31.968 31.968 0 1 0 45.248 45.216l58.528-58.528a31.584 31.584 0 0 0 8.832-19.84A349.664 349.664 0 0 0 512 877.248c71.328 0 137.664-21.44 193.152-58.048a31.04 31.04 0 0 0 8.224 16.672l58.528 58.56a31.904 31.904 0 0 0 45.248 0 32 32 0 0 0 0-45.28l-58.528-58.528a31.36 31.36 0 0 0-9.28-6.176C819.616 720.064 864 627.84 864 525.248c0-194.08-157.92-352-352-352M544 519.104v-185.856a32 32 0 0 0-64 0v199.104c0 8.48 3.36 16.64 9.376 22.624l107.296 107.296a31.904 31.904 0 0 0 45.248 0 32 32 0 0 0 0-45.248L544 519.104zM182.624 286.4l90.528-90.56a32 32 0 0 0-45.248-45.216L137.376 241.152A31.968 31.968 0 1 0 182.624 286.4M883.872 227.872l-90.496-90.496a31.968 31.968 0 1 0-45.248 45.248l90.496 90.496a31.904 31.904 0 0 0 45.248 0 31.968 31.968 0 0 0 0-45.248"
+            p-id="16350"
+          ></path>
+        </svg>
+
+        <!-- 静音 -->
+        <svg
+          class="icon"
+          style="
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+            fill: #fff;
+            overflow: hidden;
+          "
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="28922"
+        >
+          <path
+            d="M351.573333 408.96a192 192 0 0 1 192-192h13.013334a184.533333 184.533333 0 0 1 85.333333 27.093333L672.213333 213.333333a228.053333 228.053333 0 0 0-109.013333-38.4V149.333333a21.333333 21.333333 0 0 0-21.333333-21.333333 21.333333 21.333333 0 0 0-21.333334 21.333333v26.026667a232.746667 232.746667 0 0 0-136.533333 62.08 235.946667 235.946667 0 0 0-74.453333 170.666667v168.106666l42.666666-42.666666zM841.6 686.08l-59.733333-98.56a22.826667 22.826667 0 0 1-2.986667-11.093333v-160a247.253333 247.253333 0 0 0-23.466667-104.96l-32.426666 32.64a207.146667 207.146667 0 0 1 13.013333 72.32V576a62.506667 62.506667 0 0 0 9.386667 33.066667l59.733333 98.773333H358.826667l-42.666667 42.666667h488.96a42.666667 42.666667 0 0 0 36.48-64zM543.786667 853.333333a64 64 0 0 1-64-64h-42.666667a106.666667 106.666667 0 0 0 213.333333 0h-42.666666a64 64 0 0 1-64 64z"
+            p-id="28923"
+          ></path>
+          <path
+            d="M168.280999 777.659439m13.4256-13.425601l576.546585-576.546585q13.425601-13.425601 26.851202 0l3.318688 3.318688q13.425601 13.425601 0 26.851201l-576.546585 576.546586q-13.425601 13.425601-26.851202 0l-3.318688-3.318688q-13.425601-13.425601 0-26.851202Z"
+            p-id="28924"
+          ></path>
+        </svg>
+
+        <div class="battery-text">93%</div>
+        <svg
+          class="battery"
+          style="
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+            fill: #fff;
+            overflow: hidden;
+          "
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="31414"
+        >
+          <path
+            d="M769.578667 284.714667a42.666667 42.666667 0 0 1 42.666666 42.666666v355.584a42.666667 42.666667 0 0 1-42.666666 42.666667H128a42.666667 42.666667 0 0 1-42.666667-42.666667V327.381333a42.666667 42.666667 0 0 1 42.666667-42.666666z m0 42.666666H128v355.584h641.578667V327.381333z m133.546666 71.125334c19.669333 0 33.28 12.117333 35.285334 30.72l0.256 4.821333v142.250667c0 19.669333-12.117333 33.28-30.762667 35.285333l-4.778667 0.256h-49.066666v-213.333333h49.066666z m-647.850666 4.906666c11.52 0 19.626667 5.248 21.077333 18.730667l0.256 4.821333v157.696c0 17.066667-8.533333 23.466667-21.333333 23.466667-11.52 0-19.584-5.205333-21.077334-18.688l-0.256-4.778667v-157.696c0-17.066667 8.533333-23.552 21.333334-23.552z m128 0c11.52 0 19.626667 5.248 21.077333 18.730667l0.256 4.821333v157.696c0 17.066667-8.533333 23.466667-21.333333 23.466667-11.52 0-19.584-5.205333-21.077334-18.688l-0.256-4.778667v-157.696c0-17.066667 8.533333-23.552 21.333334-23.552z m128 0c11.52 0 19.626667 5.248 21.077333 18.730667l0.256 4.821333v157.696c0 17.066667-8.533333 23.466667-21.333333 23.466667-11.52 0-19.584-5.205333-21.077334-18.688l-0.256-4.778667v-157.696c0-17.066667 8.533333-23.552 21.333334-23.552z m128 0c11.52 0 19.626667 5.248 21.077333 18.730667l0.256 4.821333v157.696c0 17.066667-8.533333 23.466667-21.333333 23.466667-11.52 0-19.584-5.205333-21.077334-18.688l-0.256-4.778667v-157.696c0-17.066667 8.533333-23.552 21.333334-23.552z"
+            p-id="31415"
+          ></path>
+        </svg>
+
+        <div class="time">11:52</div>
+      </div>
+
+      <div class="page-head">
+        <div class="left">
+          <img src="./imgs/home.png" alt="" class="home" />
+          <div class="text">苏康码</div>
+        </div>
+        <img src="./imgs/right.png" alt="" class="right" />
+      </div>
+
+      <div class="blue-back">
+        <div class="item item1">
+          <img src="./imgs/su.png" alt="" style="width: 35px" />
+          <div class="text">苏康码·绿码</div>
+        </div>
+
+        <div class="item item2">刘志浩</div>
+
+        <div class="item item3">189****2654</div>
+        <div class="item item4">372******18</div>
+      </div>
+
+      <div class="dynamic-text">
+        <div class="text-container">
+          若您有近7天中高风险地区旅居史(含境外)请及时信息更新和风险报备。
+        </div>
+      </div>
+
+      <div class="info-container">
+        <div class="qr-code-container">
+          <div class="time">10-19 12:39:21</div>
+          <img src="./imgs/helth.png" alt="" />
+        </div>
+
+        <div class="hesuan-container">
+          <div class="title">核酸 ( 省内 )</div>
+          <div class="content">
+            <div class="dur">48</div>
+            <div class="desp">小时阴性</div>
+          </div>
+          <div class="bottom-container">
+            <svg
+              class="right"
+              style="
+                width: 1em;
+                height: 1em;
+                vertical-align: middle;
+                fill: #c1baba;
+                overflow: hidden;
+              "
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="9772"
+            >
+              <path
+                d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666zM864 499.2l-341.333333-309.333333c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733333 285.866667-315.733333 285.866666c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466666 10.666667 8.533333 0 14.933333-2.133333 21.333334-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666 0-8.533333-4.266667-17.066667-10.666667-23.466667z"
+                p-id="9773"
+              ></path>
+            </svg>
+            <div class="description">右滑查看</div>
+          </div>
+        </div>
+
+        <div class="vaccanico-container">
+          <div class="title">新冠疫苗</div>
+          <div class="content">已全程接种</div>
+          <div class="bottom-container">
+            <div class="description">左滑查看</div>
+            <svg
+              class="left"
+              style="
+                width: 1em;
+                height: 1em;
+                vertical-align: middle;
+                fill: #c1baba;
+                overflow: hidden;
+              "
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="1177"
+            >
+              <path
+                d="M842.666667 864c-8.533333 0-14.933333-2.133333-21.333334-8.533333l-341.333333-309.333334c-6.4-6.4-10.666667-14.933333-10.666667-23.466666 0-8.533333 4.266667-17.066667 10.666667-23.466667l341.333333-309.333333c12.8-12.8 34.133333-10.666667 44.8 2.133333 12.8 12.8 10.666667 34.133333-2.133333 44.8L548.266667 522.666667l315.733333 285.866666c12.8 10.666667 14.933333 32 2.133333 44.8-6.4 6.4-14.933333 10.666667-23.466666 10.666667zM512 864c-8.533333 0-14.933333-2.133333-21.333333-8.533333L149.333333 546.133333c-6.4-6.4-10.666667-14.933333-10.666666-23.466666 0-8.533333 4.266667-17.066667 10.666666-23.466667L490.666667 189.866667c12.8-12.8 34.133333-10.666667 44.8 2.133333 12.8 12.8 10.666667 34.133333-2.133334 44.8L217.6 522.666667 533.333333 808.533333c12.8 12.8 14.933333 32 2.133334 44.8-6.4 6.4-14.933333 10.666667-23.466667 10.666667z"
+                p-id="1178"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const time = document.querySelector(".info-container .time");
+      const nameDom = document.querySelector(".item2");
+      const name = window.prompt("请输入姓名");
+
+      nameDom.innerHTML = name;
+      function parseTime(time, cFormat) {
+        if (arguments.length === 0 || !time) {
+          return null;
+        }
+        const format = cFormat || "{y}-{m}-{d} {h}:{i}:{s}";
+        let date;
+        if (typeof time === "object") {
+          date = time;
+        } else {
+          if (typeof time === "string") {
+            if (/^[0-9]+$/.test(time)) {
+              // support "1548221490638"
+              time = parseInt(time);
+            } else {
+              // support safari
+              // https://stackoverflow.com/questions/4310953/invalid-date-in-safari
+              time = time.replace(new RegExp(/-/gm), "/");
+            }
+          }
+
+          if (typeof time === "number" && time.toString().length === 10) {
+            time = time * 1000;
+          }
+          date = new Date(time);
+        }
+        const formatObj = {
+          y: date.getFullYear(),
+          m: date.getMonth() + 1,
+          d: date.getDate(),
+          h: date.getHours(),
+          i: date.getMinutes(),
+          s: date.getSeconds(),
+          a: date.getDay(),
+        };
+        const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
+          const value = formatObj[key];
+          // Note: getDay() returns 0 on Sunday
+          if (key === "a") {
+            return ["日", "一", "二", "三", "四", "五", "六"][value];
+          }
+          return value.toString().padStart(2, "0");
+        });
+        return time_str;
+      }
+      setInterval(() => {
+        const currentTime = new Date();
+        const curTimeTemp = currentTime.getTime();
+        time.innerHTML = parseTime(curTimeTemp).slice(5);
+      }, 1000);
+    </script>
+  </body>
+</html>
